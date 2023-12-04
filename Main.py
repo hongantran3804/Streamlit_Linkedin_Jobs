@@ -24,8 +24,7 @@ In this dynamic project, I harnessed the power of machine learning to revolution
 
 with tab2:
     st.subheader("Import dataset")
-    df = pd.read_csv("
-    Fixed_Linkedin.csv")
+    df = pd.read_csv("Fixed_Linkedin.csv")
     st.info(f"Rows, Columns: {df.shape}")
     st.dataframe(df)
 with tab3:
