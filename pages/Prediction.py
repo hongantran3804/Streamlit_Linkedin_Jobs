@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 import statsmodels.api as sm
 st.set_page_config("Prediction_Board",layout='wide')
 st.header("Prediction DashBoard")
-df = pd.read_csv("C:\AProgramming\Python\Linkedin\Streamlit_Linkedin\Streamlit_Prediction.csv")
+df = pd.read_csv("Streamlit_Prediction.csv")
 df = df.drop(columns=['Data Analyst intern','Software Engineer intern','Data Scientist intern','Data Engineer intern'],axis=1)
 x = df.iloc[:,1:]
 y = df['Salary']

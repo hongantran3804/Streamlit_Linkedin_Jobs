@@ -24,13 +24,14 @@ In this dynamic project, I harnessed the power of machine learning to revolution
 
 with tab2:
     st.subheader("Import dataset")
-    df = pd.read_csv("C:\AProgramming\Python\Linkedin\Fixed_Linkedin.csv")
+    df = pd.read_csv("
+    Fixed_Linkedin.csv")
     st.info(f"Rows, Columns: {df.shape}")
     st.dataframe(df)
 with tab3:
     col1,col2 = st.columns([2,1])
     with col1:
-        df = pd.read_csv("C:\AProgramming\Python\Linkedin\Fixed_Linkedin.csv")
+        df = pd.read_csv("Fixed_Linkedin.csv")
         error_values = pd.DataFrame({'No unique values': df.nunique(),
                             'Missing Value': df.isna().sum(),
                             'Duplicated': df.duplicated().sum(),
@@ -53,7 +54,7 @@ with tab3:
 </div>""",unsafe_allow_html=True)
         
 with tab4:
-    tmp_df = pd.read_csv("C:\AProgramming\Python\Linkedin\Streamlit_Linkedin\Streamlit_Linkedin_Jobs.csv")
+    tmp_df = pd.read_csv("Streamlit_Linkedin_Jobs.csv")
     fil_Location = tmp_df['Location'].value_counts().reset_index()
     get_location = fil_Location[fil_Location['count'] >= 10]['Location']
     job_title_df = tmp_df['Job_Title'].value_counts().reset_index()
@@ -210,7 +211,7 @@ with tab4:
                         """,unsafe_allow_html=True)
             
 with tab5:
-    df = pd.read_csv("C:\AProgramming\Python\Linkedin\Streamlit_Linkedin\Streamlit_Prediction.csv")
+    df = pd.read_csv("Streamlit_Prediction.csv")
     st.info(f"Columns, Rows: {df.shape}")
     st.dataframe(df)
     
