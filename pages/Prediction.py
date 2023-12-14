@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split 
+from sklearn.linear_model import LinearRegression
 st.set_page_config("Prediction_Board",layout='wide')
 st.header("Prediction DashBoard")
 df = pd.read_csv("Streamlit_Prediction.csv")
