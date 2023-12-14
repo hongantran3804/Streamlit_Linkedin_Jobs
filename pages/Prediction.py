@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from mlxtend.feature_selection import SequentialFeatureSelector
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split 
 import statsmodels.api as sm
