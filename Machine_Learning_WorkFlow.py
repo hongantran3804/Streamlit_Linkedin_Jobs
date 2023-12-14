@@ -1,10 +1,10 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-st.set_page_config("Home Page",layout="wide")
+st.set_page_config("Machine Learning Work Flow",layout="wide")
 st.header("Linkedin Scraping Jobs")
-tab1, tab2, tab3, tab4, tab5 = st.tabs(['General Information','Import Data','Data Exploration','Visualization','Data Cleaning & Feature Engineering'])
-with tab1:
+tab0,tab1, tab2, tab3, tab4, tab5 = st.tabs(['General Information',"Data Collection",'Import Data','Data Exploration','Visualization','Data Cleaning & Feature Engineering'])
+with tab0:
     st.markdown(f"""
                 <div>
              <h3><strong>Define Project: </strong></h3>
@@ -12,6 +12,7 @@ with tab1:
 In this dynamic project, I harnessed the power of machine learning to revolutionize the way we understand and predict salaries based on LinkedIn job titles. Leveraging advanced algorithms, I developed a robust model capable of analyzing various factors that influence salary outcomes, providing valuable insights for both job seekers and employers.
 <br><br>
 <h3><strong>Key Features: </strong></h3>
+
 - Data-driven Insights: I curated a comprehensive dataset from LinkedIn, incorporating diverse job titles and corresponding salary information. This data served as the foundation for training the machine learning model.
 <br>
 - Predictive Modeling: Through the implementation of cutting-edge machine learning techniques, I created a predictive model capable of forecasting salary ranges for specific job titles. This enables users to make informed decisions regarding salary expectations.
@@ -21,6 +22,29 @@ In this dynamic project, I harnessed the power of machine learning to revolution
 - Continuous Learning: To ensure the model's accuracy and relevance, I implemented a feedback loop for continuous learning. This enables the model to adapt to changing job market dynamics and evolving salary trends.              
 </div>""",unsafe_allow_html=True)
 
+with tab1:
+    df = pd.read_csv("Initial_Linkedin.csv")
+    col1,col2 = st.columns(2)
+    with col1:
+        st.info(f"Rows, Columns: {df.shape}")
+        st.dataframe(df)
+    with col2:
+        st.markdown(f"""
+                    <br>
+                    <h5>Source:</h5>
+                    <div>
+                    
+    - Automation with Python and Selenium:
+    
+        - Utilizing Python along with the Selenium library.
+        - Objective: Automate the extraction of crucial information from the LinkedIn Jobs page.
+    - Targeted Data Retrieval:
+    
+        - Extracting information such as job title, company name, salary details, and required skills.
+        <br>
+        - Additional details: Retrieving posting date, working status (full-time, part-time, etc.), and working type (on-site, hybrid, etc.).
+                    </div>
+                    """,unsafe_allow_html=True)
 
 with tab2:
     st.subheader("Import dataset")
@@ -66,9 +90,9 @@ with tab4:
     
     if "Illustrating the relationships among location, job title, working type, number of employees, and salary." in choice:
         st.subheader("Illustrating the relationships among location, job title, working type, number of employees, and salary.")
-        column1, column2 = st.columns([2.5,1])
+        column1, column2,column3 = st.columns([3,0.1,1])
         with column1:
-            col1,col2 = st.columns([1,1])
+            col1,col2,col3 = st.columns([2,0.1,2])
             with col1:
                 location_df = tmp_df[tmp_df['Location'].isin(get_location)][['Location','Salary']]
                 location_df = location_df.drop_duplicates(subset="Location",keep='first')
@@ -76,7 +100,7 @@ with tab4:
                 location_df = tmp_df[tmp_df['Location'].isin(location)][['Location','Salary']]
                 location_plotly = px.box(location_df,x = 'Location',y = 'Salary',color = 'Location')
                 st.plotly_chart(location_plotly,use_container_width=True)
-            with col2:
+            with col3:
                 selection = st.selectbox(label="Select option",options=['Job_Title','Working_Type','Number_of_Employees'])
                 if selection == 'Job_Title':
                     get_title_df = tmp_df[tmp_df['Job_Title'].isin(get_title)][["Job_Title","Salary"]]
@@ -97,11 +121,12 @@ with tab4:
                     employee_df = employee_df[employee_df['Employee'].isin(employee)][["Employee","Salary"]]
                     employee_plot = px.box(employee_df,x = "Employee",y = "Salary",color="Employee")
                     st.plotly_chart(employee_plot,use_container_width=True)
-        with column2:
+        with column3:
             st.markdown(f"""
-                        <br><br>
+                        <br>
                         <div>
                        <h5> Analysis for relation between salary and job title, location, working type, working status </h5>
+                       
 - The salary range and average salaries vary for each role, with Software Engineers generally having a higher average salary compared to Data Scientists and Data Engineers.
 
 - Remote work options are prevalent across all roles, indicating a growing trend in the tech industry toward flexible work arrangements.
@@ -173,7 +198,7 @@ with tab4:
             st.plotly_chart(skill_plot,user_container_width=True)
         with col2:
             st.markdown(f"""
-                        <br><br><br>
+                        <br>
                         <div>
                        <h5>Analysis for Skills requirements: </h5>
 
@@ -210,7 +235,32 @@ with tab4:
                         """,unsafe_allow_html=True)
             
 with tab5:
-    df = pd.read_csv("Streamlit_Prediction.csv")
-    st.info(f"Columns, Rows: {df.shape}")
-    st.dataframe(df)
+    col1,col2 = st.columns(2)
+    with col1:
+        df = pd.read_csv("Streamlit_Prediction.csv")
+        st.info(f"Columns, Rows: {df.shape}")
+        st.dataframe(df)
+    with col2:
+        st.markdown(f"""
+                    <h5>Data Preparation for Machine Learning:</h5>
+                    <br>
+                    <div>
+                    
+- Handle missing values and outliers for cleaner datasets.
+
+- Address skewness and apply necessary transformations for balanced features.
+
+- Create new features to provide richer insights for model training.
+
+- Scale and encode variables appropriately for effective model learning.
+
+- Mitigate class imbalances in the target variable to prevent bias.
+
+- Use techniques like PCA for dimensionality reduction.
+
+- Tokenize and vectorize text data for machine learning compatibility.
+
+- Manage time dependencies in time series data and extract relevant temporal features.
+                    </div>
+                    """,unsafe_allow_html=True)
     
