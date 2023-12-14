@@ -33,7 +33,7 @@ for col in x.columns:
         dummies_collection.append(0)
         
 dummies_collection = np.array(dummies_collection).reshape(1,-1)
-col1,col2,col3 = st.columns([1.25,1,1])
+col1,col2,col3 = st.columns([1,1,1])
 with col2:
     salary = '{:,.0f}'.format(round(model.predict(dummies_collection)[0]))
     st.subheader(f"Predicted Salary: $ {salary}")
