@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 st.set_page_config("Machine Learning Work Flow",layout="wide")
-st.header("Linkedin Scraping Jobs")
+st.header("Job Market Forecaster")
 tab0,tab1, tab2, tab3, tab4, tab5 = st.tabs(['General Information',"Data Collection",'Import Data','Data Exploration','Visualization','Data Cleaning & Feature Engineering'])
 with tab0:
     st.markdown(f"""
@@ -75,7 +75,7 @@ with tab3:
 
 - Some columns have missing values, such as Job_Title, Employee, and Industry. The handling of missing data may be necessary depending on the analysis goals.
 </div>""",unsafe_allow_html=True)
-        
+
 with tab4:
     tmp_df = pd.read_csv("Streamlit_Linkedin_Jobs.csv")
     fil_Location = tmp_df['Location'].value_counts().reset_index()
@@ -233,7 +233,7 @@ with tab4:
 - Periods of Stability: Despite fluctuations, there are periods where the number of job postings remains relatively stable for some time. Identifying these stable periods could be useful for understanding consistent hiring trends.
 </div>
                         """,unsafe_allow_html=True)
-            
+
 with tab5:
     col1,col2 = st.columns(2)
     with col1:
@@ -263,4 +263,3 @@ with tab5:
 - Manage time dependencies in time series data and extract relevant temporal features.
                     </div>
                     """,unsafe_allow_html=True)
-    
